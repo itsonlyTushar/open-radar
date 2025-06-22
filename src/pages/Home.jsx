@@ -1,0 +1,169 @@
+import { useEffect, useState } from "react";
+import { FaGithub } from "react-icons/fa";
+import Card from "../components/Card";
+import Selection from "../components/Selection";
+import Button from "../components/UI/Button";
+import Loading from "../components/UI/Loading";
+import { Helmet } from "react-helmet-async";
+
+function Home() {
+  const [tech, setTech] = useState("javascript");
+  const [status, setStatus] = useState("open");
+  const [fetchedData, setFetchedData] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
+  const [view, setView] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Pagination
+  const handlePageClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prev) => prev + 1);
+  };
+
+  const handlePrev = () => {
+    setCurrentPage((prev) => prev - 1);
+  };
+
+  const dataPerPage = 10;
+  const totalPages = Math.ceil(totalCount / dataPerPage);
+
+  // GitHub API URL - the main api from all the data is being fetched ---updated----
+  const apiUrl = `https://api.github.com/search/issues?q=label:%22good%20first%20issue%22+language:${tech}+state:${status}&sort=created&order=desc&per_page=${dataPerPage}&page=${currentPage}`;
+
+  const fetchApi = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      setFetchedData(data.items);
+      setTotalCount(data.total_count);
+    } catch (error) {
+      console.error("Error fetching API:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchApi();
+  }, [tech, status, currentPage, dataPerPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [tech, status]);
+
+  // dropdown data
+
+  const dropDownData = [
+    {
+      id: 1,
+      name: "tech",
+      title: "Tech",
+      func: (e) => setTech(e.target.value),
+      options: [
+        { tech: "javascript", title: "Javascript" },
+        { tech: "typescript", title: "Typescript" },
+        { tech: "python", title: "Python" },
+        { tech: "react.js", title: "React" },
+        { tech: "next.js", title: "Next" },
+      ],
+    },
+    {
+      id: 2,
+      name: "status",
+      title: "State",
+      func: (e) => setStatus(e.target.value),
+      options: [
+        { tech: "open", title: "Open" },
+        { tech: "closed", title: "Closed" },
+      ],
+    },
+  ];
+
+  return (
+    <>
+      <Helmet>
+        <title>Home - Discover Open Source Projects</title>
+        <meta
+          name="description"
+          content="OpenRadar helps web developers discover trending open source projects, first issues, and learning resources."
+        />
+        <meta
+          name="keywords"
+          content="github, git, git api, python, open source, javascript, begineer projects, web dev projects, trending github projects, contribute, first issue, web development, mern stack"
+        />
+      </Helmet>
+
+      <main>
+        {/* Dropdown Data  */}
+        <div className="flex pt-24">
+          {dropDownData.map((details) => (
+            <Selection
+              key={details.id}
+              title={details.title}
+              changeFunc={details.func}
+              optionData={details.options}
+              name={details.name}
+            />
+          ))}
+        </div>
+      </main>
+
+      {isLoading ? (
+        <Loading textSize={"text-4xl"} />
+      ) : (
+        <>
+          <div className="p-2 text-sm text-gray-600">
+            Showing page {currentPage} of {totalPages} ({totalCount} total
+            issues)
+          </div>
+
+          <Card
+            fetchedApi={fetchedData}
+            viewVar={view}
+            setView={() => setView(!view)}
+          />
+        </>
+      )}
+
+      {/* Pagination numbers  */}
+      <section className="text-black p-5 flex items-center justify-center">
+        <Button
+          disabled={currentPage === 1}
+          btnTitle={"Previous"}
+          onClick={handlePrev}
+        />
+
+        {/* Showing only a few page numbers around current page */}
+        {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
+          const pageNum = i + 1;
+          return (
+            <button
+              onClick={() => handlePageClick(pageNum)}
+              className={`p-2 px-3 transition ease-in-out m-2 rounded-md text-xl font-semibold border border-black ${
+                currentPage === pageNum
+                  ? "bg-[#D6F7E7]"
+                  : "bg-white hover:bg-[#D6F7E7]"
+              }`}
+              key={pageNum}
+            >
+              {pageNum}
+            </button>
+          );
+        })}
+
+        <Button
+          btnTitle={"Next"}
+          onClick={handleNext}
+          disabled={currentPage >= totalPages}
+        />
+      </section>
+    </>
+  );
+}
+
+export default Home;
