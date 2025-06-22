@@ -65,7 +65,7 @@ function Learn() {
         </div>
 
         <div className="flex flex-col items-center justify-center py-6 px-8 w-full">
-          <h3 className="sm:text-2xl md:text-3xl lg:text-6xl font-semibold text-center mb-6">
+          <h3 className="text-4xl sm:text-2xl md:text-3xl lg:text-6xl font-semibold text-center mb-6">
             Learn How to Contribute
           </h3>
 
@@ -82,7 +82,7 @@ function Learn() {
 
       <section className="bg-white p-4 py-16">
         <div className="grid grid-cols-1 content-center  place-items-center gap-4 my-4">
-          <h1 className="sm:text-2xl md:text-3xl lg:text-6xl max-w-6xl font-semibold text-center mb-6">
+          <h1 className="text-4xl sm:text-2xl md:text-3xl lg:text-6xl max-w-6xl font-semibold text-center mb-6">
             How To Start
           </h1>
           <div className="grid sm:grid-cols-1 md:grid-cols-1 ld:grid-cols-2 content-center gap-4">

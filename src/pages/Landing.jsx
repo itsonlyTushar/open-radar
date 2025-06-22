@@ -10,7 +10,6 @@ function Landing() {
 
   return (
     <>
-    
         <Helmet>
           <title>OpenRadar - Discover Open Source Projects</title>
           <meta

@@ -1,7 +1,6 @@
 import { FaGithub } from "react-icons/fa";
 
-
-function Card({fetchedApi, viewVar, setView}) {
+function Card({ fetchedApi, viewVar, setView }) {
   return (
     <section className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-2">
       {fetchedApi?.map((details) => {
@@ -93,6 +92,12 @@ function Card({fetchedApi, viewVar, setView}) {
                   {details.user.html_url.split("https://github.com/")[1]}
                 </a>
               </span>
+            </div>
+            <div className="flex gap-2">
+              <h4 className="bg-red-100 max-w-xs w-full text-center rounded font-semibold">
+                {" "}
+                Assigned Developers: {details.assignees?.length || 0}
+              </h4>
             </div>
           </div>
         );

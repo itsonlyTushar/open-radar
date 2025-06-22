@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { FaGithub } from "react-icons/fa";
 import Card from "../components/Card";
 import Selection from "../components/Selection";
 import Button from "../components/UI/Button";
