@@ -1,6 +1,6 @@
-    ![logo](https://res.cloudinary.com/dartdvch1/image/upload/v1750574314/Screenshot_2025-06-22_120555_ezq9ke.png)
+[Watch the demo](https://res.cloudinary.com/dartdvch1/image/upload/v1750574314/Screenshot_2025-06-22_120555_ezq9ke.png)
 
-# OpenRadar 
+# OpenRadar
 
 A daily-updated platform that helps web developers discover beginner-friendly open source projects and issues to contribute to.Designed specifically for web technologies — HTML, CSS, JavaScript, and modern frameworks — this tool makes it easy to learn, practice, and grow by contributing to real-world codebases.
 
@@ -22,6 +22,7 @@ Our platform focuses solely on web development and brings a curated, organized f
 - Connect with the global developer community
 
 - Give back to open source projects you use every day
+
 ---
 
 ## Live Demo
