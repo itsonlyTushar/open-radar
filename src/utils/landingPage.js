@@ -9,7 +9,7 @@
     },
     {
       id: 2,
-      heading: "Developers wanting to build their GitHub profile",
+      heading: "Developer wanting to build their GitHub profile",
     },
     {
       id: 3,
