@@ -1,4 +1,4 @@
-[Watch the demo](https://res.cloudinary.com/dartdvch1/image/upload/v1750574314/Screenshot_2025-06-22_120555_ezq9ke.png)
+![OpenRadar Logo](https://res.cloudinary.com/dartdvch1/image/upload/v1750574314/Screenshot_2025-06-22_120555_ezq9ke.png)
 
 # OpenRadar
 
@@ -27,7 +27,7 @@ Our platform focuses solely on web development and brings a curated, organized f
 
 ## Live Demo
 
-#### [Visit OpenRadar](openradar.live)
+#### Url : https://openradar.live
 
 ---
 
