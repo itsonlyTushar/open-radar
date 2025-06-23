@@ -10,18 +10,18 @@ function Landing() {
 
   return (
     <>
-        <Helmet>
-          <title>OpenRadar - Discover Open Source Projects</title>
-          <meta
-            name="description"
-            content="OpenRadar helps web developers discover trending open source projects, first issues, and learning resources."
-          />
-          <meta
-            name="keywords"
-            content="open source, open radar, trending github projects, contribute, first issue, web development, mern stack, angular, react, next.js, python"
-          />
-        </Helmet>
-  
+      <Helmet>
+        <title>OpenRadar - Discover Open Source Projects</title>
+        <meta
+          name="description"
+          content="OpenRadar helps web developers discover trending open source projects, first issues, and learning resources."
+        />
+        <meta
+          name="keywords"
+          content="open source, open radar, trending github projects, contribute, first issue, web development, mern stack, angular, react, next.js, python"
+        />
+      </Helmet>
+
       <main className="pt-20">
         <div className="flex flex-col justify-center items-center mx-auto border border-b-black py-26 h-[70vh]">
           <h1 className="text-4xl sm:text-2xl md:text-3xl lg:text-6xl max-w-6xl text-center font-semibold">
@@ -152,6 +152,33 @@ function Landing() {
             src="https://res.cloudinary.com/dartdvch1/image/upload/v1750586184/tech_mmg1vo.png"
             alt="tech"
           />
+        </div>
+      </section>
+
+      {/* Desription Section  */}
+      <section className="border border-black  flex flex-col items-center py-20 mb-2">
+        <h3 className="text-4xl sm:text-2xl md:text-3xl lg:text-4xl max-w-6xl font-bold text-center mb-6 my-6 ">
+          Find Open Source Projects to Contribute to - OpenRadar
+        </h3>
+
+        <div className="max-w-4xl text-justify w-full gap-4">
+          <p>
+            OpenRadar is a platform that helps developers discover quality open
+            source projects to contribute to. We aggregate and analyze GitHub
+            repositories to surface active projects with good maintainer
+            engagement and clear contribution paths. The platform covers
+            everything from beginner-friendly HTML/CSS projects to more complex
+            React, Node.js, Python, and Go codebases, filtering for repos that
+            actually have responsive maintainers and well-labeled issues.
+            Whether you're looking to build your portfolio, learn a new tech
+            stack, or give back to the open source community, we match you with
+            repositories that have decent documentation and realistic first-time
+            contributor opportunities. Instead of spending hours searching
+            through GitHub trying to find projects that aren't abandoned or
+            overly complex, we do the legwork of identifying active OSS projects
+            where your contributions can actually make an impact and get merged
+            in a reasonable timeframe.
+          </p>
         </div>
       </section>
     </>
