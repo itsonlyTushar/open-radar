@@ -4,6 +4,9 @@ import Selection from "../components/Selection";
 import Button from "../components/UI/Button";
 import Loading from "../components/UI/Loading";
 import { Helmet } from "react-helmet-async";
+import { FaCheck } from "react-icons/fa6";
+import * as Checkbox from "@radix-ui/react-checkbox";
+import { debounce } from "lodash";
 
 function Home() {
   const [tech, setTech] = useState("javascript");
@@ -13,6 +16,9 @@ function Home() {
   const [view, setView] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [isSelfAssigned, setIsSelfAssigned] = useState(false);
+  const [isAssigned, setIsAssigned] = useState(false);
 
   // Pagination
   const handlePageClick = (pageNumber) => {
@@ -33,10 +39,16 @@ function Home() {
   // GitHub API URL - the main api from all the data is being fetched ---updated----
   const apiUrl = `https://api.github.com/search/issues?q=label:%22good%20first%20issue%22+language:${tech}+state:${status}&sort=created&order=desc&per_page=${dataPerPage}&page=${currentPage}`;
 
+  console.log(apiUrl);
+
   const fetchApi = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(apiUrl);
+      const response = await fetch(apiUrl, {
+        headers: {
+          Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+        },
+      });
       const data = await response.json();
       setFetchedData(data.items);
       setTotalCount(data.total_count);
@@ -47,9 +59,18 @@ function Home() {
     }
   };
 
-  useEffect(() => {
+  // chek box is there so we are using debaunce below
+
+  const debounceApi = debounce(() => {
     fetchApi();
-  }, [tech, status, currentPage, dataPerPage]);
+  }, 500);
+
+  useEffect(() => {
+    debounceApi();
+    return () => {
+      debounceApi.cancel();
+    };
+  }, [tech, status, currentPage, dataPerPage, isAssigned, isSelfAssigned]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -99,16 +120,45 @@ function Home() {
 
       <main>
         {/* Dropdown Data  */}
-        <div className="flex pt-24">
+        <div className="flex grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2  pt-24">
           {dropDownData.map((details) => (
-            <Selection
-              key={details.id}
-              title={details.title}
-              changeFunc={details.func}
-              optionData={details.options}
-              name={details.name}
-            />
+            <div key={details.id}>
+              <Selection
+                title={details.title}
+                changeFunc={details.func}
+                optionData={details.options}
+                name={details.name}
+              />
+            </div>
           ))}
+
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 place-items-center content-center px-6 py-2">
+            <div className="flex gap-2 items-center">
+              <span>Not Assigned</span>
+              <Checkbox.Root
+                className="bg-white border border-black w-6 hoverEffect hover:scale-110 h-6 flex items-center justify-center rounded"
+                checked={isAssigned}
+                onCheckedChange={() => setIsAssigned(!isAssigned)}
+              >
+                <Checkbox.Indicator>
+                  <FaCheck />
+                </Checkbox.Indicator>
+              </Checkbox.Root>
+            </div>
+
+            <div className="flex gap-2 items-center">
+              <span>Exclude Self Assigned</span>
+              <Checkbox.Root
+                className="bg-white border border-black w-6 hoverEffect hover:scale-110 h-6 flex items-center justify-center rounded"
+                checked={isSelfAssigned}
+                onCheckedChange={() => setIsSelfAssigned(!isSelfAssigned)}
+              >
+                <Checkbox.Indicator>
+                  <FaCheck />
+                </Checkbox.Indicator>
+              </Checkbox.Root>
+            </div>
+          </div>
         </div>
       </main>
 
@@ -122,6 +172,8 @@ function Home() {
           </div>
 
           <Card
+            isAsn={isAssigned}
+            selfAsn={isSelfAssigned}
             fetchedApi={fetchedData}
             viewVar={view}
             setView={() => setView(!view)}
