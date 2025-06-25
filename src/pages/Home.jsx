@@ -36,19 +36,10 @@ function Home() {
   const dataPerPage = 10;
   const totalPages = Math.ceil(totalCount / dataPerPage);
 
-  // GitHub API URL - the main api from all the data is being fetched ---updated----
-  const apiUrl = `https://api.github.com/search/issues?q=label:%22good%20first%20issue%22+language:${tech}+state:${status}&sort=created&order=desc&per_page=${dataPerPage}&page=${currentPage}`;
-
-  console.log(apiUrl);
-
   const fetchApi = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(apiUrl, {
-        headers: {
-          Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
-        },
-      });
+      const response = await fetch(`/api/github?tech=${tech}&status=${status}&perPage=${dataPerPage}&page=${currentPage}`);
       const data = await response.json();
       setFetchedData(data.items);
       setTotalCount(data.total_count);
