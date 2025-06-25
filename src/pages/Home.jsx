@@ -36,19 +36,28 @@ function Home() {
   const dataPerPage = 10;
   const totalPages = Math.ceil(totalCount / dataPerPage);
 
-  const fetchApi = async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch(`/api/github?tech=${tech}&status=${status}&perPage=${dataPerPage}&page=${currentPage}`);
-      const data = await response.json();
-      setFetchedData(data.items);
-      setTotalCount(data.total_count);
-    } catch (error) {
-      console.error("Error fetching API:", error);
-    } finally {
-      setIsLoading(false);
+const fetchApi = async () => {
+  setIsLoading(true);
+  try {
+    const response = await fetch(
+      `/api/github?tech=${tech}&status=${status}&perPage=${dataPerPage}&page=${currentPage}`
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "API call failed");
     }
-  };
+
+    setFetchedData(data.items || []);
+    setTotalCount(data.total_count || 0);
+  } catch (error) {
+    console.error("Error fetching API:", error);
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   // chek box is there so we are using debaunce below
 
