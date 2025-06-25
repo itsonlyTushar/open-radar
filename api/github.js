@@ -8,6 +8,7 @@ export default async function handler(req, res) {
 
   const url = `https://api.github.com/search/issues?q=label:%22good%20first%20issue%22+language:${tech}+state:${status}&sort=created&order=desc&per_page=${perPage}&page=${page}`;
 
+
   try {
     const response = await fetch(url, {
       headers: {
