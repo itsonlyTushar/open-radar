@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet-async";
 import { FaCheck } from "react-icons/fa6";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { debounce } from "lodash";
+import { useLocation } from "react-router";
 
 function Home() {
   const [tech, setTech] = useState("javascript");
@@ -23,6 +24,7 @@ function Home() {
   // Pagination
   const handlePageClick = (pageNumber) => {
     setCurrentPage(pageNumber);
+    window.scrollTo(0, 0);
   };
 
   const handleNext = () => {
@@ -84,11 +86,12 @@ function Home() {
       title: "Tech",
       func: (e) => setTech(e.target.value),
       options: [
-        { tech: "javascript", title: "Javascript" },
-        { tech: "typescript", title: "Typescript" },
-        { tech: "python", title: "Python" },
-        { tech: "react.js", title: "React" },
-        { tech: "next.js", title: "Next" },
+        { tech: "JavaScript", title: "JavaScript", isLang: true },
+        { tech: "TypeScript", title: "TypeScript", isLang: true },
+        { tech: "Python", title: "Python", isLang: true },
+        { tech: "Java", title: "Java", isLang: true },
+        { tech: "PHP", title: "PHP", isLang: true },
+        { tech: "Go", title: "Go", isLang: true },
       ],
     },
     {

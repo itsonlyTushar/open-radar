@@ -41,7 +41,7 @@ function Card({
                       href={details.html_url}
                       rel="noopener noreferrer"
                     >
-                      <h1 className="sm:text-xl md:text-2xl lg:text-3xl flex items-center gap-4 text-wrap max-w-2xl w-full">
+                      <h1 className="sm:text-xl md:text-2xl lg:text-2xl flex items-center gap-4 text-wrap max-w-2xl w-full">
                         {details.title}
                       </h1>
                     </a>
