@@ -7,7 +7,6 @@ import { Helmet } from "react-helmet-async";
 import { FaCheck } from "react-icons/fa6";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { debounce } from "lodash";
-import { useLocation } from "react-router";
 
 function Home() {
   const [tech, setTech] = useState("javascript");
@@ -60,8 +59,7 @@ function Home() {
     }
   };
 
-  // chek box is there so we are using debaunce below
-
+  // check box is there so we are using debaunce below
   const debounceApi = debounce(() => {
     fetchApi();
   }, 500);
@@ -78,7 +76,6 @@ function Home() {
   }, [tech, status]);
 
   // dropdown data
-
   const dropDownData = [
     {
       id: 1,
@@ -191,9 +188,12 @@ function Home() {
           onClick={handlePrev}
         />
 
-        {/* Showing only a few page numbers around current page */}
-        {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
-          const pageNum = i + 1;
+        {Array.from({ length: 5 }, (_, i) => {
+          const offset = Math.max(0, Math.min(currentPage - 3, totalPages - 5));
+          const pageNum = offset + i + 1;
+
+          if (pageNum > totalPages) return null;
+
           return (
             <button
               onClick={() => handlePageClick(pageNum)}

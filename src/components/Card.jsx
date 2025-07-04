@@ -103,7 +103,7 @@ function Card({
                     )}
                   </p>
 
-                  {/* From which users its posted  */}
+                  {/* From which users its posted  */} 
                   <div className="flex items-center gap-4 py-4">
                     <p>From :</p>
                     <img
