@@ -89,6 +89,7 @@ function Home() {
         { tech: "Java", title: "Java", isLang: true },
         { tech: "PHP", title: "PHP", isLang: true },
         { tech: "Go", title: "Go", isLang: true },
+        { tech: "react", title: "react", isLang: true },
       ],
     },
     {
