@@ -1,3 +1,5 @@
+import React from "react";
+
 function Selection({ title, changeFunc, name, optionData }) {
   return (
     <div className="flex items-center gap-2 p-2 w-full">

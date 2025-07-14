@@ -36,7 +36,7 @@ export const socialLinks = [
   },
   {
     name: "Portfolio",
-    link: "https://portfolio-site-six-navy.vercel.app/",
+    link: "https://tusharsoni.site",
     icon: RiComputerFill,
   },
 ];

@@ -1,4 +1,5 @@
 import { videos } from "../utils/videos";
+import React from "react";
 
 function Videos() {
   return (

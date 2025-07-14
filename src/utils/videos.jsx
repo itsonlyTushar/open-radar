@@ -1,5 +1,8 @@
 // Third part video tutorials to show on learn how page
 // these are curated with the help of
+
+import React from "react";
+
 // ChatGPT and Own information
 
 export const videos = [

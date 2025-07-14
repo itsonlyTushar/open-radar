@@ -2,6 +2,8 @@ import { RiNextjsFill } from "react-icons/ri";
 import { FaReact } from "react-icons/fa";
 import { IoLogoPython } from "react-icons/io";
 import { BiLogoTypescript } from "react-icons/bi";
+import React from "react";
+
 
 export default function Radar() {
   return (

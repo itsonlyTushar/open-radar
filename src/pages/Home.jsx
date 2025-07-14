@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
 import Selection from "../components/Selection";
 import Button from "../components/UI/Button";
@@ -13,7 +13,7 @@ function Home() {
   const [status, setStatus] = useState("open");
   const [fetchedData, setFetchedData] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
-  const [view, setView] = useState(false);
+ 
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -89,7 +89,6 @@ function Home() {
         { tech: "Java", title: "Java", isLang: true },
         { tech: "PHP", title: "PHP", isLang: true },
         { tech: "Go", title: "Go", isLang: true },
-        { tech: "react", title: "react", isLang: true },
       ],
     },
     {
@@ -120,7 +119,7 @@ function Home() {
 
       <main>
         {/* Dropdown Data  */}
-        <div className="flex grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2  pt-24">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 pt-24">
           {dropDownData.map((details) => (
             <div key={details.id}>
               <Selection
@@ -175,8 +174,8 @@ function Home() {
             isAsn={isAssigned}
             selfAsn={isSelfAssigned}
             fetchedApi={fetchedData}
-            viewVar={view}
-            setView={() => setView(!view)}
+
+           
           />
         </>
       )}

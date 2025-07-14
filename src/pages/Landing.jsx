@@ -4,6 +4,7 @@ import { CiCircleCheck } from "react-icons/ci";
 import { FaHeadSideVirus } from "react-icons/fa6";
 import { madeFor, whoIsThis, whyContribute } from "../utils/landingPage";
 import { Helmet } from "react-helmet-async";
+import React from "react";
 
 function Landing() {
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ function Landing() {
             {whoIsThis.map((head) => (
               <div
                 key={head.id}
-                className="flex text-start text-justify items-center gap-2"
+                className="flex text-justify items-center gap-2"
               >
                 <FaCodeBranch className="text-xl sm:text-xl md:text-2xl lg:text-3xl" />
                 <span className="flex item-center gap-2 text-xl sm:text-xl md:text-2xl lg:text-2xl">

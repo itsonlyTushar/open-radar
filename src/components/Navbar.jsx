@@ -4,6 +4,7 @@ import Logo from "./Logo";
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { RxHamburgerMenu } from "react-icons/rx";
+import React from "react";
 
 function Navbar() {
   const location = useLocation();
