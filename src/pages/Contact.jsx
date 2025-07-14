@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Input from "../components/UI/Input";
 import emailjs from "@emailjs/browser";
 import { ImSpinner2 } from "react-icons/im";

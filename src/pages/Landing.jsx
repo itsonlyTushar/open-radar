@@ -89,7 +89,7 @@ function Landing() {
             {whyContribute.map((head) => (
               <div
                 key={head.id}
-                className="flex text-start text-justify items-center gap-2"
+                className="flex text-start items-center gap-2"
               >
                 <CiCircleCheck className="text-xl sm:text-xl md:text-3xl lg:text-4xl my-5" />
                 <span className="flex item-center gap-2 text-xl sm:text-xl md:text-2xl lg:text-2xl">
@@ -136,7 +136,7 @@ function Landing() {
             {madeFor.map((head) => (
               <div
                 key={head.id}
-                className="flex text-start text-justify items-center gap-2"
+                className="flex text-start items-center gap-2"
               >
                 <FaHeadSideVirus className="text-xl sm:text-xl md:text-3xl lg:text-4xl my-5" />
                 <span className="flex item-center gap-2 text-xl sm:text-xl md:text-2xl lg:text-2xl">

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import my from "../assets/my.jpg";
 import { Helmet } from "react-helmet-async";
+import React from "react";
 
 function About() {
   const navigate = useNavigate();

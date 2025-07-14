@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { articles } from "../utils/articles";
+import React from "react";
 
 function Articles() {
   return (
@@ -8,7 +9,7 @@ function Articles() {
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 place-items-center content-center gap-5">
         {articles.map((article) => (
           <div
-            className="rounded-lg hoverEffect border border-black flex border gap-5 bg-white p-5 m-5 w-full max-w-xl min-h-[150px] h-full"
+            className="rounded-lg hoverEffect border-black flex border gap-5 bg-white p-5 m-5 w-full max-w-xl min-h-[150px] h-full"
             key={article.link}
           >
             <Link target="_blank" to={article.link}>
@@ -17,7 +18,7 @@ function Articles() {
                   {article.articleheading}
                 </h1>
 
-                <p className="text-justify text-center mt-4">
+                <p className="text-justify mt-4">
                   About : {article.about}
                 </p>
               </article>
