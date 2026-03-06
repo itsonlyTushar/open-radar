@@ -4,8 +4,7 @@ import Selection from "../components/Selection";
 import Button from "../components/UI/Button";
 import Loading from "../components/UI/Loading";
 import { Helmet } from "react-helmet-async";
-import { FaCheck } from "react-icons/fa6";
-import * as Checkbox from "@radix-ui/react-checkbox";
+import Switch from "../components/UI/Switch";
 import { debounce } from "lodash";
 
 function Home() {
@@ -13,7 +12,7 @@ function Home() {
   const [status, setStatus] = useState("open");
   const [fetchedData, setFetchedData] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
- 
+
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,14 +33,14 @@ function Home() {
     setCurrentPage((prev) => prev - 1);
   };
 
-  const dataPerPage = 10;
+  const dataPerPage = 9;
   const totalPages = Math.ceil(totalCount / dataPerPage);
 
   const fetchApi = async () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `/api/github?tech=${tech}&status=${status}&perPage=${dataPerPage}&page=${currentPage}`
+        `/api/github?tech=${tech}&status=${status}&perPage=${dataPerPage}&page=${currentPage}`,
       );
 
       const data = await response.json();
@@ -117,55 +116,49 @@ function Home() {
         />
       </Helmet>
 
-      <main>
-        {/* Dropdown Data  */}
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 pt-24">
-          {dropDownData.map((details) => (
-            <div key={details.id}>
-              <Selection
-                title={details.title}
-                changeFunc={details.func}
-                optionData={details.options}
-                name={details.name}
-              />
-            </div>
-          ))}
+      <div className="pt-24 max-w-7xl mx-auto px-4 pb-12">
+        <section className="flex flex-col items-center justify-center text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mt-6">
+            Discover Open Source Projects
+          </h1>
+          <p className="mt-4 text-neutral-500 max-w-2xl text-lg">
+            Find trending repositories, first issues, and learning resources.
+          </p>
+        </section>
 
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 place-items-center content-center px-6 py-2">
-            <div className="flex gap-2 items-center">
-              <span>Not Assigned</span>
-              <Checkbox.Root
-                className="bg-white border border-black w-6 hoverEffect hover:scale-110 h-6 flex items-center justify-center rounded"
-                checked={isAssigned}
-                onCheckedChange={() => setIsAssigned(!isAssigned)}
-              >
-                <Checkbox.Indicator>
-                  <FaCheck />
-                </Checkbox.Indicator>
-              </Checkbox.Root>
+        {/* Filters and Controls */}
+        <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-6 shadow-sm mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            {dropDownData.map((details) => (
+              <div key={details.id}>
+                <Selection
+                  title={details.title}
+                  changeFunc={details.func}
+                  optionData={details.options}
+                  name={details.name}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-8 pt-6 border-t border-neutral-100 dark:border-neutral-800">
+            <div className="flex items-center gap-3">
+              <span className="font-medium text-neutral-700 dark:text-neutral-300 text-sm">Not Assigned</span>
+              <Switch checked={isAssigned} onChange={() => setIsAssigned(!isAssigned)} />
             </div>
 
-            <div className="flex gap-2 items-center">
-              <span>Exclude Self Assigned</span>
-              <Checkbox.Root
-                className="bg-white border border-black w-6 hoverEffect hover:scale-110 h-6 flex items-center justify-center rounded"
-                checked={isSelfAssigned}
-                onCheckedChange={() => setIsSelfAssigned(!isSelfAssigned)}
-              >
-                <Checkbox.Indicator>
-                  <FaCheck />
-                </Checkbox.Indicator>
-              </Checkbox.Root>
+            <div className="flex items-center gap-3">
+              <span className="font-medium text-neutral-700 dark:text-neutral-300 text-sm">Exclude Self Assigned</span>
+              <Switch checked={isSelfAssigned} onChange={() => setIsSelfAssigned(!isSelfAssigned)} />
             </div>
           </div>
         </div>
-      </main>
 
       {isLoading ? (
         <Loading textSize={"text-4xl"} />
       ) : (
         <>
-          <div className="p-2 text-sm text-gray-600">
+          <div className="p-2 mb-4 text-sm text-gray-600 dark:text-gray-400">
             Showing page {currentPage} of {totalPages} ({totalCount} total
             issues)
           </div>
@@ -174,14 +167,12 @@ function Home() {
             isAsn={isAssigned}
             selfAsn={isSelfAssigned}
             fetchedApi={fetchedData}
-
-           
           />
         </>
       )}
 
-      {/* Pagination numbers  */}
-      <section className="text-black p-5 flex items-center justify-center">
+      {/* Pagination numbers */}
+      <section className="text-neutral-900 dark:text-neutral-100 p-5 mt-8 flex items-center justify-center">
         <Button
           disabled={currentPage === 1}
           btnTitle={"Previous"}
@@ -197,10 +188,10 @@ function Home() {
           return (
             <button
               onClick={() => handlePageClick(pageNum)}
-              className={`p-2 px-3 transition ease-in-out m-2 rounded-md text-xl font-semibold border border-black ${
+              className={`p-2 px-3 transition ease-in-out m-2 rounded-md text-xl font-semibold border border-neutral-300 dark:border-neutral-700 ${
                 currentPage === pageNum
-                  ? "bg-[#D6F7E7]"
-                  : "bg-white hover:bg-[#D6F7E7]"
+                  ? "bg-neutral-200 dark:bg-neutral-800"
+                  : "bg-white dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800"
               }`}
               key={pageNum}
             >
@@ -215,6 +206,7 @@ function Home() {
           disabled={currentPage >= totalPages}
         />
       </section>
+      </div>
     </>
   );
 }

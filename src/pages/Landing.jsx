@@ -4,7 +4,7 @@ import { CiCircleCheck } from "react-icons/ci";
 import { FaHeadSideVirus } from "react-icons/fa6";
 import { madeFor, whoIsThis, whyContribute } from "../utils/landingPage";
 import { Helmet } from "react-helmet-async";
-import React from "react";
+
 
 function Landing() {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ function Landing() {
       <main className="pt-20">
         <div className="flex flex-col justify-center items-center mx-auto border border-b-black py-26 h-[70vh]">
           <h1 className="text-4xl sm:text-2xl md:text-3xl lg:text-6xl max-w-6xl text-center font-semibold">
-            Learn by Doing — Real Open Source Projects for Web Developers
+            Learn by Doing — Real Open Source Projects for Developers
           </h1>
           <span className="py-2 sm:text-xl md:text-xl lg:text-xl my-2 font-bold">
             curated, organized, and ready for action.
@@ -109,9 +109,9 @@ function Landing() {
           </h1>
           <div className="grid sm:grid-cols-1 md:grid-cols-1 ld:grid-cols-2 content-center gap-4">
             <p className="max-w-3xl text-xl">
-              You’re learning React, Next.js, Tailwind, vanilla JS — and you
+              You’re learning React, Next.js, Tailwind, vanilla JS and you
               want real projects where you can practice these skills. That’s why
-              we built this. A platform 100% focused on web developers — no more
+              we built this. A platform 100% focused on web developers no more
               searching through irrelevant issues.
             </p>
           </div>

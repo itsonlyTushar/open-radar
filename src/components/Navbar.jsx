@@ -18,34 +18,34 @@ function Navbar() {
         <ul className="hidden sm:hidden md:hidden lg:flex xl:flex gap-4">
           <Link to={"/home"}>
             <li
-              className={`${
-                location.pathname === "/home" &&
+              className={`${location.pathname === "/home" &&
                 "border  border-black rounded-md"
-              } px-2 py-1`}
+                } px-2 py-1`}
             >
               Home
             </li>
           </Link>
+
+
+          <Link to={"/ai"}>
+            <li
+              className={`${location.pathname === "/ai" &&
+                "border  border-black rounded-md"
+                } px-2 py-1`}
+            >
+              Everthing AI
+            </li>
+          </Link>
           <Link to={"/about"}>
             <li
-              className={`${
-                location.pathname === "/about" &&
+              className={`${location.pathname === "/about" &&
                 "border  border-black rounded-md"
-              } px-2 py-1`}
+                } px-2 py-1`}
             >
               About
             </li>
           </Link>
-          <Link to={"/contact"}>
-            <li
-              className={`${
-                location.pathname === "/contact" &&
-                "border  border-black rounded-md"
-              } px-2 py-1`}
-            >
-              Contact
-            </li>
-          </Link>
+
 
           <Link to={"/learn"}>
             <li
@@ -62,35 +62,22 @@ function Navbar() {
           <ul className="lg:hidden xl:hidden gap-4">
             <Link to={"/home"}>
               <li
-                className={`${
-                  location.pathname === "/home" &&
+                className={`${location.pathname === "/home" &&
                   "border  border-black rounded-md"
-                } px-2 py-1`}
+                  } px-2 py-1`}
               >
                 Home
               </li>
             </Link>
             <Link to={"/about"}>
               <li
-                className={`${
-                  location.pathname === "/about" &&
+                className={`${location.pathname === "/about" &&
                   "border  border-black rounded-md"
-                } px-2 py-1`}
+                  } px-2 py-1`}
               >
                 About
               </li>
             </Link>
-            <Link to={"/contact"}>
-              <li
-                className={`${
-                  location.pathname === "/contact" &&
-                  "border  border-black rounded-md"
-                } px-2 py-1`}
-              >
-                Contact
-              </li>
-            </Link>
-
             <Link to={"/learn"}>
               <li
                 className={`bg-black text-white px-4 py-1 rounded-md flex items-center gap-2 mt-2`}
@@ -101,8 +88,15 @@ function Navbar() {
           </ul>
         )}
 
-          <button className="lg:hidden xl:hidden" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <RxCross2 className="text-2xl" /> : <RxHamburgerMenu className="text-2xl"/>}
+        <button
+          className="lg:hidden xl:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? (
+            <RxCross2 className="text-2xl" />
+          ) : (
+            <RxHamburgerMenu className="text-2xl" />
+          )}
         </button>
       </nav>
     </>

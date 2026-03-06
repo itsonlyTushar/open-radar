@@ -9,7 +9,6 @@ export const footerLinks = [
   { listName: "Home", link: "/home" },
   { listName: "About Us", link: "/about" },
   { listName: "Privacy Policy", link: "/policy" },
-  { listName: "Contact", link: "/contact" },
 ];
 
 // social media links

@@ -54,7 +54,7 @@ function About() {
             <p className="text-xl">
               Hi, I’m Tushar — a passionate web developer who loves building
               cool stuff. I created this platform because when I was learning, I
-              struggled to find good open source projects for web developers.
+              struggled to find good open source projects for developers.
               Now I want to make it easier for others and me too, to start
               contributing — and level up their skills by working on real-world
               projects.

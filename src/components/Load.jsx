@@ -1,0 +1,17 @@
+import React from "react";
+
+const Load = () => {
+  return (
+    <div class="loader">
+      <span></span>
+
+      <div id="dot-1" class="dot"></div>
+      <div id="dot-2" class="dot"></div>
+      <div id="dot-3" class="dot"></div>
+      <div id="dot-4" class="dot"></div>
+      <div id="dot-5" class="dot"></div>
+    </div>
+  );
+};
+
+export default Load;

@@ -8,7 +8,6 @@ export default async function handler(req, res) {
 
   const url = `https://api.github.com/search/issues?q=label:%22good%20first%20issue%22+language:${tech}+state:${status}&sort=created&order=desc&per_page=${perPage}&page=${page}`;
 
-
   try {
     const response = await fetch(url, {
       headers: {
@@ -20,7 +19,9 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (!response.ok) {
-      return res.status(response.status).json({ error: data.message || "GitHub API error" });
+      return res
+        .status(response.status)
+        .json({ error: data.message || "GitHub API error" });
     }
 
     res.status(200).json(data);

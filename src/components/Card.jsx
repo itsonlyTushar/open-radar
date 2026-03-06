@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaGithub } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi";
 
 function Card({ fetchedApi, selfAsn, isAsn }) {
   const [expandedId, setExpandedId] = useState(null);
@@ -33,45 +34,39 @@ function Card({ fetchedApi, selfAsn, isAsn }) {
 
     return (
       <div
-        className="bg-white h-full min-h-[5rem] text-wrap m-2 border border-black transition-transform duration-200 p-4 rounded-md"
+        className="flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-xl p-6 bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-all duration-200"
         key={details.id}
       >
         {/* Header */}
-        <div className="flex justify-between items-start mb-3">
-          <a
-            target="_blank"
-            className="hover:underline flex-1 mr-4"
-            href={details.html_url}
-            rel="noopener noreferrer"
-          >
-            <h1 className="sm:text-xl md:text-2xl lg:text-2xl flex items-center gap-4 text-wrap">
-              {details.title}
-            </h1>
-          </a>
-          <span className="text-sm text-gray-600 whitespace-nowrap">
+        <div className="flex items-start justify-between mb-4 gap-4">
+          <div className="flex items-center gap-3 overflow-hidden">
+            <img
+              className="w-11 h-11 object-cover rounded-full border border-neutral-100 dark:border-neutral-800 shrink-0"
+              src={details.user.avatar_url}
+              alt={user}
+            />
+            <div className="flex flex-col min-w-0">
+              <h3 className="font-bold text-lg truncate" title={details.title}>
+                {details.title}
+              </h3>
+              <span className="text-sm text-neutral-500 truncate hover:underline cursor-pointer">
+                <a target="_blank" href={details.user.html_url} rel="noopener noreferrer">
+                  @{user}
+                </a>
+              </span>
+            </div>
+          </div>
+          <span className="text-xs text-neutral-500 shrink-0 mt-1 bg-neutral-100 dark:bg-neutral-800 px-2 py-1 rounded">
             {formattedDate}
           </span>
         </div>
 
-        {/* Repository Info */}
-        <div className="flex items-center gap-4 my-3 font-thin text-sm">
-          <FaGithub className="text-xl" />
-          <a 
-            target="_blank" 
-            href={details.user.html_url}
-            className="hover:underline"
-            rel="noopener noreferrer"
-          >
-            {details.repository_url.split("https://api.github.com/repos/")[1]}
-          </a>
-        </div>
-
         {/* Labels */}
-        <div className="flex items-center text-center text-wrap overflow-hidden mb-3">
+        <div className="flex flex-wrap gap-2 mb-4">
           {details.labels?.slice(0, 3).map((tag) => (
             <span
               key={tag.id}
-              className="mx-1 my-1 text-black font-semibold text-sm rounded-md px-2 py-1"
+              className="text-xs font-semibold px-2 py-1 rounded-full text-white"
               style={{ backgroundColor: `#${tag.color}` }}
             >
               {tag.name}
@@ -81,8 +76,8 @@ function Card({ fetchedApi, selfAsn, isAsn }) {
 
         {/* Body/Description */}
         {hasBody && (
-          <div className="mb-4">
-            <p className="text-gray-700">
+          <div className="mb-6 flex-grow">
+            <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
               {needsTruncation && !isExpanded
                 ? `${details.body.slice(0, 120)}...`
                 : details.body}
@@ -90,45 +85,52 @@ function Card({ fetchedApi, selfAsn, isAsn }) {
             {needsTruncation && (
               <button
                 onClick={() => toggleExpanded(details.id)}
-                className="text-blue-600 hover:text-blue-800 underline text-sm mt-2"
+                className="text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200 underline text-sm mt-1"
               >
-                {isExpanded ? "View less..." : "View more..."}
+                {isExpanded ? "View less" : "View more"}
               </button>
             )}
           </div>
         )}
 
-        {/* User Info */}
-        <div className="flex items-center gap-4 py-4">
-          <p className="text-gray-600">From:</p>
-          <img
-            className="object-cover w-10 h-10 rounded-full"
-            src={details.user.avatar_url}
-            alt={`${user} avatar`}
-          />
-          <span className="text-md font-semibold hover:underline">
-            <a
-              target="_blank"
-              href={details.user.html_url}
-              rel="noopener noreferrer"
-            >
-              {user}
-            </a>
-          </span>
-        </div>
-
-
-        <div className="flex gap-2">
-          <div className="bg-red-100 max-w-xs w-full text-center rounded font-semibold px-3 py-1">
-            Assigned Developers: {details.assignees?.length || 0}
+        {/* Footer */}
+        <div className="mt-auto pt-4 border-t border-neutral-100 dark:border-neutral-800 flex flex-col gap-4">
+          <div className="flex items-center justify-between text-sm text-neutral-600 dark:text-neutral-400">
+            <div className="flex items-center gap-2 font-medium">
+              <FaGithub className="text-lg" />
+              <a 
+                target="_blank" 
+                href={details.repository_url.replace("https://api.github.com/repos/", "https://github.com/")}
+                className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors truncate max-w-[150px]"
+                title={details.repository_url.split("https://api.github.com/repos/")[1]}
+                rel="noopener noreferrer"
+              >
+                {details.repository_url.split("https://api.github.com/repos/")[1]}
+              </a>
+            </div>
+            
+            <div className="flex items-center gap-1.5 bg-neutral-100 dark:bg-neutral-800 px-2.5 py-1 rounded">
+              <span className="text-xs font-semibold whitespace-nowrap">
+                Assignees: {details.assignees?.length || 0}
+              </span>
+            </div>
           </div>
+
+          <a
+            href={details.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 w-full py-2.5 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-100 rounded-lg text-sm font-semibold transition-colors duration-200"
+          >
+            View Issue <FiExternalLink />
+          </a>
         </div>
       </div>
     );
   };
 
   return (
-    <section className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-2">
+    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {fetchedApi
         ?.filter(shouldShowCard)
         .map((details) => (

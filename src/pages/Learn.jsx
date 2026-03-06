@@ -60,14 +60,14 @@ function Learn() {
           <img
             className="border-r border-black object-cover max-w-3xl w-full"
             src="https://res.cloudinary.com/dartdvch1/image/upload/v1750586184/branch_ibrx1z.png"
-            alt="branch"
+            alt="Illustration of Git branching workflow"
           />
         </div>
 
         <div className="flex flex-col items-center justify-center py-6 px-8 w-full">
-          <h3 className="text-4xl sm:text-2xl md:text-3xl lg:text-6xl font-semibold text-center mb-6">
+          <h1 className="text-4xl sm:text-2xl md:text-3xl lg:text-6xl font-semibold text-center mb-6">
             Learn How to Contribute
-          </h3>
+          </h1>
 
           <p className="max-w-4xl text-justify mb-8">
             Start your open source journey by learning and contributing with the
@@ -82,20 +82,10 @@ function Learn() {
 
       <section className="bg-white p-4 py-16">
         <div className="grid grid-cols-1 content-center  place-items-center gap-4 my-4">
-          <h1 className="text-4xl sm:text-2xl md:text-3xl lg:text-6xl max-w-6xl font-semibold text-center mb-6">
+          <h2 className="text-4xl sm:text-2xl md:text-3xl lg:text-6xl max-w-6xl font-semibold text-center mb-6">
             How To Start
-          </h1>
-          <div className="grid sm:grid-cols-1 md:grid-cols-1 ld:grid-cols-2 content-center gap-4">
-            <p className="max-w-3xl text-lg">
-              Begin by learning the programming language you want to work with,
-              then get familiar with Git and GitHub basics. Once you're
-              comfortable with these, follow the steps outlined below to start
-              contributing to open source projects. Each step will guide you
-              through the process and help you build confidence along the way.
-            </p>
-          </div>
-
-          {/* Time line compoenent  */}
+          </h2>
+          {/* Timeline component */}
           <VerticalTimeline className="z-index">
             {timeLineContent.map((time) => (
               <VerticalTimelineElement
@@ -118,7 +108,7 @@ function Learn() {
         <Articles />
       </section>
 
-      <section className="bg-white p-4 py-16 ">
+      <section className="bg-white p-4 py-16">
         <Videos />
       </section>
     </>

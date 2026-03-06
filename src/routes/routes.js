@@ -3,7 +3,7 @@ import Policy from "../pages/Policy";
 import Home from "../pages/Home";
 import Landing from "../pages/Landing";
 import About from "../pages/About";
-import Contact from "../pages/Contact";
+import AI from "../pages/AI";
 
 export const routes = [
   {
@@ -15,12 +15,12 @@ export const routes = [
     element: Home,
   },
   {
-    path: "/about",
-    element: About,
+    path: "/ai",
+    element: AI,
   },
   {
-    path: "/contact",
-    element: Contact,
+    path: "/about",
+    element: About,
   },
   {
     path: "/learn",

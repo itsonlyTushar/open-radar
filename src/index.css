@@ -32,3 +32,255 @@ body {
     transition: all 0.1s ease-in-out;
     
 }
+
+
+/* RADAR EFFECT  */
+/* From Uiverse.io by Valeron-T */ 
+.loader {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: #212121;
+  border-radius: 50%;
+  box-shadow: inset 0px 0px 7px seagreen;
+  border: 1px solid seagreen;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  background: transparent;
+  border: 1px solid seagreen;
+  border-radius: 50%;
+  box-shadow: inset 0px 0px 5px seagreen;
+}
+
+.loader::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid seagreen;
+  box-shadow: inset 0px 0px 3px seagreen;
+}
+
+.loader span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  transform-origin: top left;
+  animation: radar81 2s linear infinite;
+  box-shadow: -25px -75px 30px -50px seagreen;
+  border-top: 2px solid #2e8b57;
+}
+
+.loader span::before {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15%;
+  height: 100%;
+  background: seagreen;
+  transform-origin: top left;
+  transform: rotate(-90deg);
+  filter: blur(15px) drop-shadow(10px 0px 10px seagreen);
+}
+
+@keyframes radar81 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#dot-1 {
+  --dot-start-top: 100px;
+  --dot-start-left: 140px;
+  --dot-end-top: 130px;
+  --dot-end-left: 20px;
+  --delay: 0s;
+}
+
+#dot-2 {
+  --dot-start-top: 100px;
+  --dot-start-left: 0px;
+  --dot-end-top: -3px;
+  --dot-end-left: 90px;
+  --delay: 0s;
+}
+
+#dot-3 {
+  --dot-start-top: 100px;
+  --dot-start-left: 105px;
+  --dot-end-top: 18px;
+  --dot-end-left: 18px;
+  --delay: 0s;
+}
+
+#dot-4 {
+  --dot-start-top: 110px;
+  --dot-start-left: 150px;
+  --dot-end-top: 140px;
+  --dot-end-left: 30px;
+  --delay: 0s;
+}
+
+#dot-5 {
+  --dot-start-top: -5px;
+  --dot-start-left: 85px;
+  --dot-end-top: 125px;
+  --dot-end-left: 120px;
+  --delay: 4s;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  top: var(--dot-start-top);
+  left: var(--dot-start-left);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255);
+  box-shadow: inset 0px 0px 10px 2px rgba(0, 255, 182, 0.5),
+    0px 0px 10px 2px rgba(0, 255, 135, 0.3);
+  -webkit-animation: fly 32s linear infinite;
+  animation-delay: var(--delay);
+  -moz-animation: fly 32s linear infinite;
+}
+
+@keyframes fly {
+  0% {
+    top: var(--dot-start-top);
+    left: var(--dot-start-left);
+  }
+
+  100% {
+    top: var(--dot-end-top);
+    left: var(--dot-end-left);
+  }
+
+  5%,
+  15%,
+  25%,
+  35%,
+  45%,
+  55%,
+  65%,
+  75%,
+  85%,
+  95% {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: inset 0 0 10px 2px rgba(0, 255, 182, 0.5),
+      0 0 15px 2px rgba(0, 255, 135, 1);
+  }
+
+  0%,
+  10%,
+  20%,
+  30%,
+  40%,
+  50%,
+  60%,
+  70%,
+  80%,
+  90% {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 10px 2px rgba(0, 255, 182, 0.5),
+      0 0 5px 2px rgba(0, 255, 135, 0.3);
+  }
+}
+
+/* Switch UI  */
+
+/* From Uiverse.io by Voxybuns */ 
+/* The switch - the box around the slider */
+.switch {
+  /* Variables */
+ --switch_width: 2em;
+ --switch_height: 1em;
+ --thumb_color: #e8e8e8;
+ --track_color: #e8e8e8;
+ --track_active_color: #888;
+ --outline_color: #000;
+ font-size: 17px;
+ position: relative;
+ display: inline-block;
+ width: var(--switch_width);
+ height: var(--switch_height);
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+ opacity: 0;
+ width: 0;
+ height: 0;
+}
+
+/* The slider */
+.slider {
+ box-sizing: border-box;
+ border: 2px solid var(--outline_color);
+ position: absolute;
+ cursor: pointer;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-color: var(--track_color);
+ transition: .15s;
+ border-radius: var(--switch_height);
+}
+
+.slider:before {
+ box-sizing: border-box;
+ position: absolute;
+ content: "";
+ height: var(--switch_height);
+ width: var(--switch_height);
+ border: 2px solid var(--outline_color);
+ border-radius: 100%;
+ left: -2px;
+ bottom: -2px;
+ background-color: var(--thumb_color);
+ transform: translateY(-0.2em);
+ box-shadow: 0 0.2em 0 var(--outline_color);
+ transition: .15s;
+}
+
+input:checked + .slider {
+ background-color: var(--track_active_color);
+}
+
+input:focus-visible + .slider {
+ box-shadow: 0 0 0 2px var(--track_active_color);
+}
+
+/* Raise thumb when hovered */
+input:hover + .slider:before {
+ transform: translateY(-0.3em);
+ box-shadow: 0 0.3em 0 var(--outline_color);
+}
+
+input:checked + .slider:before {
+ transform: translateX(calc(var(--switch_width) - var(--switch_height))) translateY(-0.2em);
+}
+
+/* Raise thumb when hovered & checked */
+input:hover:checked + .slider:before {
+ transform: translateX(calc(var(--switch_width) - var(--switch_height))) translateY(-0.3em);
+ box-shadow: 0 0.3em 0 var(--outline_color);
+}

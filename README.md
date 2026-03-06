@@ -23,6 +23,8 @@ Our platform focuses solely on web development and brings a curated, organized f
 
 - Give back to open source projects you use every day
 
+- **New: AI Projects Explorer**: Discover, search, and track trending Artificial Intelligence repositories seamlessly.
+
 ---
 
 ## Live Demo
@@ -38,8 +40,6 @@ Our platform focuses solely on web development and brings a curated, organized f
 - Tailwind CSS
 
 - GitHub REST API
-
-- Firebase (planned for backend features)
 
 - Learn How - generated with Grock and Gemini for latest sources
 
