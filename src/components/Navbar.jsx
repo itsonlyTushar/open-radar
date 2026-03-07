@@ -4,7 +4,6 @@ import Logo from "./Logo";
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { RxHamburgerMenu } from "react-icons/rx";
-import React from "react";
 
 function Navbar() {
   const location = useLocation();
@@ -18,34 +17,34 @@ function Navbar() {
         <ul className="hidden sm:hidden md:hidden lg:flex xl:flex gap-4">
           <Link to={"/home"}>
             <li
-              className={`${location.pathname === "/home" &&
+              className={`${
+                location.pathname === "/home" &&
                 "border  border-black rounded-md"
-                } px-2 py-1`}
+              } px-2 py-1`}
             >
               Home
             </li>
           </Link>
 
-
           <Link to={"/ai"}>
             <li
-              className={`${location.pathname === "/ai" &&
-                "border  border-black rounded-md"
-                } px-2 py-1`}
+              className={`${
+                location.pathname === "/ai" && "border  border-black rounded-md"
+              } px-2 py-1`}
             >
               Everthing AI
             </li>
           </Link>
           <Link to={"/about"}>
             <li
-              className={`${location.pathname === "/about" &&
+              className={`${
+                location.pathname === "/about" &&
                 "border  border-black rounded-md"
-                } px-2 py-1`}
+              } px-2 py-1`}
             >
               About
             </li>
           </Link>
-
 
           <Link to={"/learn"}>
             <li
@@ -62,18 +61,30 @@ function Navbar() {
           <ul className="lg:hidden xl:hidden gap-4">
             <Link to={"/home"}>
               <li
-                className={`${location.pathname === "/home" &&
+                className={`${
+                  location.pathname === "/home" &&
                   "border  border-black rounded-md"
-                  } px-2 py-1`}
+                } px-2 py-1`}
               >
                 Home
               </li>
             </Link>
+            <Link to={"/ai"}>
+              <li
+                className={`${
+                  location.pathname === "/ai" &&
+                  "border  border-black rounded-md"
+                } px-2 py-1`}
+              >
+                Everthing AI
+              </li>
+            </Link>
             <Link to={"/about"}>
               <li
-                className={`${location.pathname === "/about" &&
+                className={`${
+                  location.pathname === "/about" &&
                   "border  border-black rounded-md"
-                  } px-2 py-1`}
+                } px-2 py-1`}
               >
                 About
               </li>
