@@ -133,7 +133,7 @@ function Contact() {
 
             <button
               type="submit"
-              className="py-4 px-6 my-4 bg-black rounded-md text-white font-semibold transition-all ease-in-out border hover:border-b-[#ffc900] hover:border-r-[#ffc900] hover:border-b-4 hover:border-r-4"
+              className="py-4 px-6 my-4 bg-black text-white font-semibold transition-all ease-in-out border hover:border-b-[#ffc900] hover:border-r-[#ffc900] hover:border-b-4 hover:border-r-4"
             >
               {isLoading ? (
                 <div className="text-center flex items-center justify-center">

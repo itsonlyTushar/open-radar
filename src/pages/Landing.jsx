@@ -1,10 +1,9 @@
-import { useNavigate } from "react-router";
+﻿import { useNavigate } from "react-router";
 import { FaCodeBranch } from "react-icons/fa6";
 import { CiCircleCheck } from "react-icons/ci";
 import { FaHeadSideVirus } from "react-icons/fa6";
 import { madeFor, whoIsThis, whyContribute } from "../utils/landingPage";
 import { Helmet } from "react-helmet-async";
-
 
 function Landing() {
   const navigate = useNavigate();
@@ -23,6 +22,7 @@ function Landing() {
         />
       </Helmet>
 
+      {/* Hero */}
       <main className="pt-20">
         <div className="flex flex-col justify-center items-center mx-auto border border-b-black py-26 h-[70vh]">
           <h1 className="text-4xl sm:text-2xl md:text-3xl lg:text-6xl max-w-6xl text-center font-semibold">
@@ -31,139 +31,108 @@ function Landing() {
           <span className="py-2 sm:text-xl md:text-xl lg:text-xl my-2 font-bold">
             curated, organized, and ready for action.
           </span>
-
           <button
             onClick={() => navigate("/home")}
-            className="py-4 px-6 my-4 bg-black rounded-md text-white font-semibold transition-all ease-in-out border hover:border-b-[#ffc900] hover:border-r-[#ffc900] hover:border-b-4 hover:border-r-4"
+            className="py-4 px-6 my-4 bg-black text-white font-semibold transition-all ease-in-out border hover:border-b-[#ffc900] hover:border-r-[#ffc900] hover:border-b-4 hover:border-r-4"
           >
             Start Contributing
           </button>
         </div>
       </main>
 
-      {/* The Who Section  */}
-      <section className="bg-white p-4 py-16">
-        <div className="grid grid-cols-1 content-center  place-items-center gap-4 my-4">
-          <h1 className="text-4xl sm:text-2xl md:text-3xl lg:text-6xl max-w-6xl font-semibold text-center mb-6">
+      {/* Who Is This For */}
+      <section className="bg-white p-4 py-16 border border-b-black">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl sm:text-2xl md:text-3xl lg:text-5xl font-semibold text-center mb-10">
             Who Is This For?
-          </h1>
-          <div className="grid sm:grid-cols-1 md:grid-cols-1 ld:grid-cols-2 content-center gap-4">
-            {whoIsThis.map((head) => (
+          </h2>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-0 border border-black">
+            {whoIsThis.map((head, i) => (
               <div
                 key={head.id}
-                className="flex text-justify items-center gap-2"
+                className={`p-8 border-black ${i % 2 === 0 ? "border-r" : ""} ${i < 2 ? "border-b" : ""}`}
               >
-                <FaCodeBranch className="text-xl sm:text-xl md:text-2xl lg:text-3xl" />
-                <span className="flex item-center gap-2 text-xl sm:text-xl md:text-2xl lg:text-2xl">
-                  {head.heading}
-                </span>
+                <div className="flex items-start gap-3">
+                  <FaCodeBranch className="text-2xl shrink-0 mt-1" />
+                  <span className="text-xl leading-relaxed">{head.heading}</span>
+                </div>
               </div>
             ))}
           </div>
-
-          <button
-            onClick={() => navigate("/learn")}
-            className="py-4 px-6 my-4 bg-black rounded-md text-white font-semibold transition-all ease-in-out border hover:border-b-[#ffc900] hover:border-r-[#ffc900] hover:border-b-4 hover:border-r-4"
-          >
-            Know How to Contribute
-          </button>
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => navigate("/learn")}
+              className="py-4 px-6 bg-black text-white font-semibold transition-all ease-in-out border hover:border-b-[#ffc900] hover:border-r-[#ffc900] hover:border-b-4 hover:border-r-4"
+            >
+              Know How to Contribute
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* The Why Section  */}
-
+      {/* Why Contribute */}
       <section className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 border border-black">
-        <div className="">
+        <div className="border-r border-black">
           <img
-            className="border border-r-black object-cover"
+            className="w-full h-full object-cover"
             src="https://res.cloudinary.com/dartdvch1/image/upload/v1750586185/banner_nwmas8.png"
             alt="banner"
           />
         </div>
-        <div className="flex flex-col items-center py-6 mb-2 ">
-          <h3 className="text-4xl sm:text-2xl md:text-3xl lg:text-6xl max-w-6xl font-semibold text-center mb-6 my-6">
-            Why Contribute ?
-          </h3>
-
-          <div className="grid sm:grid-cols-1 md:grid-cols-1 ld:grid-cols-2 content-center gap-4">
+        <div className="flex flex-col justify-center px-10 py-16">
+          <h2 className="text-4xl sm:text-2xl md:text-3xl lg:text-5xl font-semibold mb-8">
+            Why Contribute?
+          </h2>
+          <div className="flex flex-col gap-5">
             {whyContribute.map((head) => (
-              <div
-                key={head.id}
-                className="flex text-start items-center gap-2"
-              >
-                <CiCircleCheck className="text-xl sm:text-xl md:text-3xl lg:text-4xl my-5" />
-                <span className="flex item-center gap-2 text-xl sm:text-xl md:text-2xl lg:text-2xl">
-                  {head.heading}
-                </span>
+              <div key={head.id} className="flex items-center gap-3">
+                <CiCircleCheck className="text-3xl shrink-0" />
+                <span className="text-xl">{head.heading}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* The About Section  */}
-      <section className="bg-white p-4 py-24">
-        <div className="grid grid-cols-1 content-center  place-items-center gap-4 my-4">
-          <h1 className="text-4xl sm:text-2xl md:text-3xl lg:text-6xl max-w-6xl font-semibold text-center mb-6">
-            About
-          </h1>
-          <div className="grid sm:grid-cols-1 md:grid-cols-1 ld:grid-cols-2 content-center gap-4">
-            <p className="max-w-3xl text-xl">
-              You’re learning React, Next.js, Tailwind, vanilla JS and you
-              want real projects where you can practice these skills. That’s why
-              we built this. A platform 100% focused on web developers no more
-              searching through irrelevant issues.
-            </p>
-          </div>
-
-          <button
-            onClick={() => navigate("/home")}
-            className="py-4 px-6 my-4 bg-black rounded-md text-white font-semibold transition-all ease-in-out border hover:border-b-[#ffc900] hover:border-r-[#ffc900] hover:border-b-4 hover:border-r-4"
-          >
-            Contribute
-          </button>
-        </div>
-      </section>
-
-      {/* Made For section  */}
-      <section className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 border border-black">
-        <div className="flex flex-col items-center py-6 mb-2 ">
-          <h3 className="text-4xl sm:text-2xl md:text-3xl lg:text-6xl max-w-6xl font-semibold text-center mb-6 my-6">
+      {/* Made For */}
+      <section className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 border border-black border-t-0">
+        <div className="flex flex-col justify-center px-10 py-16 border-r border-black">
+          <h2 className="text-4xl sm:text-2xl md:text-3xl lg:text-5xl font-semibold mb-8">
             Specially Made For
-          </h3>
-
-          <div className="grid sm:grid-cols-1 md:grid-cols-1 ld:grid-cols-2 content-center gap-4">
+          </h2>
+          <div className="flex flex-col gap-5">
             {madeFor.map((head) => (
-              <div
-                key={head.id}
-                className="flex text-start items-center gap-2"
-              >
-                <FaHeadSideVirus className="text-xl sm:text-xl md:text-3xl lg:text-4xl my-5" />
-                <span className="flex item-center gap-2 text-xl sm:text-xl md:text-2xl lg:text-2xl">
-                  {head.heading}
-                </span>
+              <div key={head.id} className="flex items-center gap-3">
+                <FaHeadSideVirus className="text-3xl shrink-0" />
+                <span className="text-xl">{head.heading}</span>
               </div>
             ))}
           </div>
+          <div className="mt-10">
+            <button
+              onClick={() => navigate("/home")}
+              className="py-4 px-6 bg-black  text-white font-semibold transition-all ease-in-out border hover:border-b-[#ffc900] hover:border-r-[#ffc900] hover:border-b-4 hover:border-r-4"
+            >
+              Browse Projects
+            </button>
+          </div>
         </div>
-
         <div className="">
           <img
-            className="border border-l-black object-cover"
+            className="w-full h-full object-cover"
             src="https://res.cloudinary.com/dartdvch1/image/upload/v1750586184/tech_mmg1vo.png"
             alt="tech"
           />
         </div>
       </section>
 
-      {/* Desription Section  */}
-      <section className="border border-black  flex flex-col items-center py-20 mb-2">
-        <h3 className="text-4xl sm:text-2xl md:text-3xl lg:text-4xl max-w-6xl font-bold text-center mb-6 my-6 ">
-          Find Open Source Projects to Contribute to - OpenRadar
-        </h3>
-
-        <div className="max-w-4xl text-justify w-full gap-4">
-          <p>
+      {/* SEO Description */}
+      <section className="border border-black border-t-0 flex flex-col items-center py-20">
+        <div className="max-w-4xl px-4 w-full">
+          <h2 className="text-3xl font-semibold text-center mb-6">
+            Find Open Source Projects to Contribute to
+          </h2>
+          <p className="text-xl text-gray-700 leading-relaxed text-justify">
             OpenRadar is a platform that helps developers discover quality open
             source projects to contribute to. We aggregate and analyze GitHub
             repositories to surface active projects with good maintainer
@@ -171,14 +140,10 @@ function Landing() {
             everything from beginner-friendly HTML/CSS projects to more complex
             React, Node.js, Python, and Go codebases, filtering for repos that
             actually have responsive maintainers and well-labeled issues.
-            Whether you're looking to build your portfolio, learn a new tech
+            Whether you are looking to build your portfolio, learn a new tech
             stack, or give back to the open source community, we match you with
             repositories that have decent documentation and realistic first-time
-            contributor opportunities. Instead of spending hours searching
-            through GitHub trying to find projects that aren't abandoned or
-            overly complex, we do the legwork of identifying active OSS projects
-            where your contributions can actually make an impact and get merged
-            in a reasonable timeframe.
+            contributor opportunities.
           </p>
         </div>
       </section>

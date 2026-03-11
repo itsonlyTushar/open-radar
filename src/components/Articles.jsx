@@ -20,7 +20,7 @@ function Articles() {
           const badge = difficultyBadge[article.difficulty] || difficultyBadge.beginner;
           return (
             <div
-              className="rounded-lg hoverEffect border-black flex flex-col border gap-3 bg-white p-5 m-5 w-full max-w-xl min-h-[150px] h-full"
+              className="hoverEffect border-black flex flex-col border gap-3 bg-white p-5 m-5 w-full max-w-xl min-h-[150px] h-full"
               key={article.link}
             >
               <Link target="_blank" to={article.link}>

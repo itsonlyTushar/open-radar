@@ -127,7 +127,7 @@ function Home() {
         </section>
 
         {/* Filters and Controls */}
-        <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-6 shadow-sm mb-8">
+        <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 p-6 shadow-sm mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {dropDownData.map((details) => (
               <div key={details.id}>

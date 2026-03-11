@@ -19,7 +19,7 @@ function Navbar() {
             <li
               className={`${
                 location.pathname === "/home" &&
-                "border  border-black rounded-md"
+                "border  border-black "
               } px-2 py-1`}
             >
               Home
@@ -29,7 +29,7 @@ function Navbar() {
           <Link to={"/ai"}>
             <li
               className={`${
-                location.pathname === "/ai" && "border  border-black rounded-md"
+                location.pathname === "/ai" && "border  border-black"
               } px-2 py-1`}
             >
               Everthing AI
@@ -39,7 +39,7 @@ function Navbar() {
             <li
               className={`${
                 location.pathname === "/about" &&
-                "border  border-black rounded-md"
+                "border  border-black"
               } px-2 py-1`}
             >
               About
@@ -48,9 +48,9 @@ function Navbar() {
 
           <Link to={"/learn"}>
             <li
-              className={`bg-black text-white px-4 py-1 rounded-md flex items-center gap-2`}
+              className={`bg-black font-bold text-white px-4 py-1 flex items-center gap-2`}
             >
-              <GoDotFill className="animate-pulse text-green-600" /> Learn How
+               Learn How
             </li>
           </Link>
         </ul>
@@ -63,7 +63,7 @@ function Navbar() {
               <li
                 className={`${
                   location.pathname === "/home" &&
-                  "border  border-black rounded-md"
+                  "border  border-black"
                 } px-2 py-1`}
               >
                 Home
@@ -73,7 +73,7 @@ function Navbar() {
               <li
                 className={`${
                   location.pathname === "/ai" &&
-                  "border  border-black rounded-md"
+                  "border  border-black"
                 } px-2 py-1`}
               >
                 Everthing AI
@@ -83,7 +83,7 @@ function Navbar() {
               <li
                 className={`${
                   location.pathname === "/about" &&
-                  "border  border-black rounded-md"
+                  "border  border-black"
                 } px-2 py-1`}
               >
                 About

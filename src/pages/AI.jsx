@@ -82,7 +82,7 @@ const AI = () => {
           </div>
           <input
             type="text"
-            className="w-full pl-10 pr-4 py-3 bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-neutral-200 dark:focus:ring-neutral-800 transition-colors duration-200 text-neutral-900 dark:text-neutral-100"
+            className="w-full pl-10 pr-4 py-3 bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-neutral-200 dark:focus:ring-neutral-800 transition-colors duration-200 text-neutral-900 dark:text-neutral-100"
             placeholder="Search AI repositories..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -103,7 +103,7 @@ const AI = () => {
             {fetchedData.map((item) => (
               <div
                 key={item.id}
-                className="flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-xl p-6 bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-all duration-200"
+                className="hoverAi flex flex-col border border-neutral-200 p-6 bg-white shadow-sm transition-all duration-200"
               >
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4 gap-4">

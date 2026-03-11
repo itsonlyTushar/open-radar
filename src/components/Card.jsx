@@ -34,7 +34,7 @@ function Card({ fetchedApi, selfAsn, isAsn }) {
 
     return (
       <div
-        className="flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-xl p-6 bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-all duration-200"
+        className="hoverEffect flex flex-col border border-black dark:border-neutral-800 p-6 bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-all duration-200"
         key={details.id}
       >
         {/* Header */}
