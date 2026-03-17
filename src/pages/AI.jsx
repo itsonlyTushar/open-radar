@@ -199,11 +199,10 @@ const AI = () => {
           return (
             <button
               onClick={() => handlePageClick(pageNum)}
-              className={`p-2 px-3 transition ease-in-out m-2 rounded-md text-xl font-semibold border border-neutral-300 dark:border-neutral-700 ${
-                currentPage === pageNum
+              className={`p-2 px-3 transition ease-in-out m-2 rounded-md text-xl font-semibold border border-neutral-300 dark:border-neutral-700 ${currentPage === pageNum
                   ? "bg-neutral-200 dark:bg-neutral-800"
                   : "bg-white dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-              }`}
+                }`}
               key={pageNum}
             >
               {pageNum}

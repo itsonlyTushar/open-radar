@@ -1,8 +1,8 @@
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
-import { RiComputerFill } from "react-icons/ri";
 import { FaGithubSquare } from "react-icons/fa";
+import { MdInsertLink } from "react-icons/md";
 
 // footer pages navigation links
 export const footerLinks = [
@@ -36,6 +36,6 @@ export const socialLinks = [
   {
     name: "Portfolio",
     link: "https://tusharsoni.site",
-    icon: RiComputerFill,
+    icon: MdInsertLink,
   },
 ];
